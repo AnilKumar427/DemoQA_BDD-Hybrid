@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="DemoQA Elements Automation Suite" verbose="1">
+
+    <parameter name="browser" value="edge" />
+
+    <listeners>
+        <listener class-name="com.demoqa.listeners.TestListener" />
+    </listeners>
+
+    <test name="Elements Category Component Tests">
+        <classes>
+            <class name="com.demoqa.tests.TextBoxTest"/>
+            <class name="com.demoqa.tests.CheckBoxTest"/>
+            <class name="com.demoqa.tests.RadioButtonTest"/>
+            <class name="com.demoqa.tests.WebTablesTest"/>
+            <class name="com.demoqa.tests.ButtonsTest"/>
+            <class name="com.demoqa.tests.LinksTest"/>
+            <class name="com.demoqa.tests.BrokenTest"/>
+            <class name="com.demoqa.tests.UploadDownloadTest"/>
+            <class name="com.demoqa.tests.DynamicPropsTest"/>
+        </classes>
+    </test>
+</suite>
