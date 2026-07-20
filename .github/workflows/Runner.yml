@@ -22,12 +22,14 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
+      # Using xvfb-run provides a virtual display to prevent headless/UI crashes
       - name: Run TestNG Suite
-        run: mvn clean test -DsuiteXmlFile=testng.xml
+        run: xvfb-run mvn clean test -DsuiteXmlFile=testng.xml
 
       - name: Upload Test Reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: test-reports
+          # Note: Ensure it points cleanly to your reports folder
           path: reports/
