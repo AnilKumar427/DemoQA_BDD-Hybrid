@@ -4,77 +4,98 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+
+    <!-- Project MetaData -->
     <groupId>com.demoqa</groupId>
     <artifactId>demoqa-automation</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <!--Properties (Version Control) -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <selenium.version>4.39.0</selenium.version>
         <testng.version>7.10.2</testng.version>
+        <log4j-api.version>2.20.0</log4j-api.version>
+        <slf4j-api.version>2.0.13</slf4j-api.version>
+        <log4j.version>2.20.0</log4j.version>
+        <log4j-slf4j2-impl.version>2.20.0</log4j-slf4j2-impl.version>
+        <commons-io.version>2.11.0</commons-io.version>
+        <extentreports.version>5.1.1</extentreports.version>
     </properties>
 
+    <!--Dependencies (The External Tools)-->
     <dependencies>
+        <!--Selenium-Java Dependency-->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${selenium.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <version>2.20.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.QA.Utils</groupId>
-            <artifactId>QA_Utils</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/QA_Utils-1.0-SNAPSHOT.jar</systemPath>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.20.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>2.11.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>2.0.13</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j2-impl</artifactId>
-            <version>2.20.0</version>
-        </dependency>
-
+        <!--TestNG Dependency-->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
         </dependency>
 
+        <!--Logging API's-->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j-api.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j-api.version}</version>
+        </dependency>
+
+        <!--Logging Frameworks-->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+        <!--Logging Frameworks Bridge-->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j2-impl</artifactId>
+            <version>${log4j-slf4j2-impl.version}</version>
+        </dependency>
+
+        <!--Common i/O for File operations (ScreenShots, XL-Read/Write, etc..) -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
+
+        <!--My Customised JAR Files Dependency-->
+        <dependency>
+            <groupId>com.QA.Utils</groupId>
+            <artifactId>QA_Utils</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>system</scope>
+            <!--Location of the Added JAR Files-->
+            <systemPath>${project.basedir}/lib/QA_Utils-1.0-SNAPSHOT.jar</systemPath>
+        </dependency>
+
+        <!--Reports Generating Dependencies-->
         <dependency>
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports</artifactId>
-            <version>5.1.1</version>
+            <version>${extentreports.version}</version>
         </dependency>
 
     </dependencies>
 
+
+    <!--Build Plugins (Maven Compiler Plugin, Maven Surefire Plugin) -->
     <build>
         <plugins>
             <plugin>

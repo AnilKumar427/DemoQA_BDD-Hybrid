@@ -1,48 +1,33 @@
-name: Customised JAR FW Test Automation Pipeline
+name: TestNG Test Execution
 
 on:
   push:
-    branches: [ "main", "master" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "main", "master" ]
-  workflow_dispatch:
+    branches: [ "main" ]
+  workflow_dispatch: # Allows manual trigger from the GitHub Actions UI
 
 jobs:
-  automation-execution:
+  run-tests:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Fetch Framework Code
+      - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Set up Java Development Kit (JDK 21)
+      - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
-          java-version: '21'
+          java-version: '17'
           distribution: 'temurin'
-          cache: 'maven'
+          cache: maven
 
-      - name: Pre-load Maven Dependency Cache
-        run: mvn dependency:go-offline
+      - name: Run TestNG Suite
+        run: mvn clean test -DsuiteXmlFile=testng.xml
 
-      - name: Execute Automation Test Suite (Headless Mode)
-        run: |
-          mvn clean test -Dbrowser=chrome -Dheadless=true
-
-      - name: Archive HTML Extent Execution Reports
+      - name: Upload Test Reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: extent-automation-reports
-          path: |
-            reports/
-            test-output/
-          retention-days: 5
-
-      - name: Archive Failure Defect Screenshots
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: regression-failure-screenshots
-          path: screenshots/
-          retention-days: 5
+          name: test-reports
+          path: reports/

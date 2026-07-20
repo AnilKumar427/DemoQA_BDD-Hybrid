@@ -4,12 +4,14 @@ import com.demoqa.pages.TextBoxPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-// Imported from your QA_Utils JAR
+// Imported from our QA_Utils JAR
 import utils.ConfigReader;
 
-public class TextBoxTest extends BaseTest {
+public class TextBoxTest extends BaseTest
+{
     @Test
-    public void testTextBoxSubmission() {
+    public void testTextBoxSubmission()
+    {
         driver.get(ConfigReader.getProperty("baseUrl") + "/text-box");
         TextBoxPage textBoxPage = new TextBoxPage(driver);
 

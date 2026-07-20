@@ -7,7 +7,8 @@ import org.openqa.selenium.support.FindBy;
 // Imported from your QA_Utils JAR
 import pages.BaseEnginePage;
 
-public class TextBoxPage extends BaseEnginePage {
+public class TextBoxPage extends BaseEnginePage
+{
     @FindBy(id = "userName")
     private WebElement userNameInput;
 
@@ -26,11 +27,13 @@ public class TextBoxPage extends BaseEnginePage {
     @FindBy(id = "output")
     private WebElement outputArea;
 
-    public TextBoxPage(WebDriver driver) {
+    public TextBoxPage(WebDriver driver)
+    {
         super(driver);
     }
 
-    public void fillForm(String name, String email, String currentAddr, String permAddr) {
+    public void fillForm(String name, String email, String currentAddr, String permAddr)
+    {
         userNameInput.sendKeys(name);
         userEmailInput.sendKeys(email);
         currentAddressInput.sendKeys(currentAddr);
@@ -38,7 +41,8 @@ public class TextBoxPage extends BaseEnginePage {
         scrollCenterAndClick(submitBtn);
     }
 
-    public boolean isOutputDisplayed() {
+    public boolean isOutputDisplayed()
+    {
         return outputArea.isDisplayed();
     }
 }
