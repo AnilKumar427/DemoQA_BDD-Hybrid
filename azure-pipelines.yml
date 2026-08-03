@@ -3,20 +3,30 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
-trigger:
-- main
+# azure-pipelines.yml
 
+trigger:
+  - main
+
+# This routes the job to your specific PC
 pool:
   name: 'MY POOL'
 
 steps:
-- task: Maven@3
+# Azure DevOps automatically checks out the code first, so we don't need a specific step for it.
+
+# Using CmdLine@2 forces standard Command Prompt, avoiding the PowerShell parsing issues with Maven arguments
+- task: CmdLine@2
+  displayName: 'Run Maven Tests (BDD Default)'
   inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.11'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+    script: |
+      mvn clean test -Dsurefire.suiteXmlFiles=testng-bdd.xml -Dheadless=true
+
+# Uploads the reports and screenshots back to Azure DevOps
+- task: PublishPipelineArtifact@1
+  condition: always()
+  displayName: 'Upload Test Artifacts'
+  inputs:
+    targetPath: '$(System.DefaultWorkingDirectory)'
+    artifact: 'Automation-Artifacts'
+    publishLocation: 'pipeline'
