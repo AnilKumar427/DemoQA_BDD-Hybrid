@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  vmImage: "local-host"
+  name: 'MY POOL'
 
 steps:
 - task: Maven@3
