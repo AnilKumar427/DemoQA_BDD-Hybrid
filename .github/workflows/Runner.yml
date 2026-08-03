@@ -1,35 +1,49 @@
-name: TestNG Test Execution
+name: DemoQA Automation Suite
 
 on:
+  # Triggers automatically when code is pushed to the main branch
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the GitHub Actions UI
   workflow_dispatch:
+    inputs:
+      test_suite:
+        description: 'Which Test Suite do you want to execute?'
+        required: true
+        default: 'testng-bdd.xml'
+        type: choice
+        options:
+          - testng-bdd.xml
+          - testng-combined.xml
+          - testng-nonbdd.xml
 
 jobs:
   run-tests:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set up JDK 21
+      - name: Set up Java JDK 17
         uses: actions/setup-java@v4
         with:
-          java-version: '21'
+          java-version: '17'
           distribution: 'temurin'
           cache: maven
 
-      # Using xvfb-run provides a virtual display to prevent headless/UI crashes
-      - name: Run TestNG Suite
-        run: xvfb-run mvn clean test -DsuiteXmlFile=testng.xml
+      - name: Run Framework (BDD Default)
+        # If triggered by a push, github.event.inputs.test_suite is null, so it falls back to 'testng-bdd.xml'
+        run: mvn clean test -Dsurefire.suiteXmlFiles=${{ github.event.inputs.test_suite || 'testng-bdd.xml' }} -Dheadless=true
 
-      - name: Upload Test Reports
-        if: always()
+      - name: Upload Test Artifacts
         uses: actions/upload-artifact@v4
+        if: always()
         with:
-          name: test-reports
-          # Note: Ensure it points cleanly to your reports folder
-          path: reports/
+          name: Automation-Artifacts
+          path: |
+            logs/
+            reports/
+            screenshots/
+          retention-days: 7

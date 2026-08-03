@@ -1,0 +1,47 @@
+2026-08-03 11:01:42 [main] INFO  com.demoqa.listeners.TestListener - ========== SUITE EXECUTION STARTED: BDD ==========
+2026-08-03 11:01:43 [main] INFO  com.demoqa.listeners.TestListener - Starting Test: Validate image rendering and link HTTP status codes
+2026-08-03 11:01:43 [main] INFO  com.demoqa.hooks.CucumberHooks - ========== Starting BDD Scenario: Validate image rendering and link HTTP status codes ==========
+2026-08-03 11:02:04 [main] INFO  com.demoqa.hooks.CucumberHooks - Scenario Finished: Validate image rendering and link HTTP status codes | Status: PASSED
+2026-08-03 11:02:04 [main] INFO  com.demoqa.hooks.CucumberHooks - ==========================================================================
+2026-08-03 11:02:08 [main] INFO  com.demoqa.listeners.TestListener - Test Passed: Validate image rendering and link HTTP status codes
+2026-08-03 11:02:08 [main] INFO  com.demoqa.listeners.TestListener - Starting Test: Perform double, right, and dynamic clicks
+2026-08-03 11:02:08 [main] INFO  com.demoqa.hooks.CucumberHooks - ========== Starting BDD Scenario: Perform double, right, and dynamic clicks ==========
+2026-08-03 11:02:16 [main] INFO  com.demoqa.hooks.CucumberHooks - Scenario Finished: Perform double, right, and dynamic clicks | Status: PASSED
+2026-08-03 11:02:16 [main] INFO  com.demoqa.hooks.CucumberHooks - ==========================================================================
+2026-08-03 11:02:20 [main] INFO  com.demoqa.listeners.TestListener - Test Passed: Perform double, right, and dynamic clicks
+2026-08-03 11:02:20 [main] INFO  com.demoqa.listeners.TestListener - Starting Test: Execute complex tree checkbox selections
+2026-08-03 11:02:20 [main] INFO  com.demoqa.hooks.CucumberHooks - ========== Starting BDD Scenario: Execute complex tree checkbox selections ==========
+2026-08-03 11:02:26 [main] INFO  com.demoqa.hooks.CucumberHooks - Scenario Finished: Execute complex tree checkbox selections | Status: PASSED
+2026-08-03 11:02:26 [main] INFO  com.demoqa.hooks.CucumberHooks - ==========================================================================
+2026-08-03 11:02:30 [main] INFO  com.demoqa.listeners.TestListener - Test Passed: Execute complex tree checkbox selections
+2026-08-03 11:02:30 [main] INFO  com.demoqa.listeners.TestListener - Starting Test: Wait for dynamic element properties
+2026-08-03 11:02:30 [main] INFO  com.demoqa.hooks.CucumberHooks - ========== Starting BDD Scenario: Wait for dynamic element properties ==========
+2026-08-03 11:02:41 [main] INFO  com.demoqa.hooks.CucumberHooks - Scenario Finished: Wait for dynamic element properties | Status: PASSED
+2026-08-03 11:02:41 [main] INFO  com.demoqa.hooks.CucumberHooks - ==========================================================================
+2026-08-03 11:02:46 [main] INFO  com.demoqa.listeners.TestListener - Test Passed: Wait for dynamic element properties
+2026-08-03 11:02:46 [main] INFO  com.demoqa.listeners.TestListener - Starting Test: Follow simple and API links
+2026-08-03 11:02:46 [main] INFO  com.demoqa.hooks.CucumberHooks - ========== Starting BDD Scenario: Follow simple and API links ==========
+2026-08-03 11:02:57 [main] INFO  com.demoqa.hooks.CucumberHooks - Scenario Finished: Follow simple and API links | Status: PASSED
+2026-08-03 11:02:57 [main] INFO  com.demoqa.hooks.CucumberHooks - ==========================================================================
+2026-08-03 11:03:01 [main] INFO  com.demoqa.listeners.TestListener - Test Passed: Follow simple and API links
+2026-08-03 11:03:01 [main] INFO  com.demoqa.listeners.TestListener - Starting Test: Select radio buttons and verify states
+2026-08-03 11:03:01 [main] INFO  com.demoqa.hooks.CucumberHooks - ========== Starting BDD Scenario: Select radio buttons and verify states ==========
+2026-08-03 11:03:07 [main] INFO  com.demoqa.hooks.CucumberHooks - Scenario Finished: Select radio buttons and verify states | Status: PASSED
+2026-08-03 11:03:07 [main] INFO  com.demoqa.hooks.CucumberHooks - ==========================================================================
+2026-08-03 11:03:11 [main] INFO  com.demoqa.listeners.TestListener - Test Passed: Select radio buttons and verify states
+2026-08-03 11:03:11 [main] INFO  com.demoqa.listeners.TestListener - Starting Test: Successfully submit the text box form
+2026-08-03 11:03:11 [main] INFO  com.demoqa.hooks.CucumberHooks - ========== Starting BDD Scenario: Successfully submit the text box form ==========
+2026-08-03 11:03:18 [main] INFO  com.demoqa.hooks.CucumberHooks - Scenario Finished: Successfully submit the text box form | Status: PASSED
+2026-08-03 11:03:18 [main] INFO  com.demoqa.hooks.CucumberHooks - ==========================================================================
+2026-08-03 11:03:22 [main] INFO  com.demoqa.listeners.TestListener - Test Passed: Successfully submit the text box form
+2026-08-03 11:03:22 [main] INFO  com.demoqa.listeners.TestListener - Starting Test: Download and upload a sample file
+2026-08-03 11:03:22 [main] INFO  com.demoqa.hooks.CucumberHooks - ========== Starting BDD Scenario: Download and upload a sample file ==========
+2026-08-03 11:03:29 [main] INFO  com.demoqa.hooks.CucumberHooks - Scenario Finished: Download and upload a sample file | Status: PASSED
+2026-08-03 11:03:29 [main] INFO  com.demoqa.hooks.CucumberHooks - ==========================================================================
+2026-08-03 11:03:33 [main] INFO  com.demoqa.listeners.TestListener - Test Passed: Download and upload a sample file
+2026-08-03 11:03:33 [main] INFO  com.demoqa.listeners.TestListener - Starting Test: Add and search for a table record
+2026-08-03 11:03:33 [main] INFO  com.demoqa.hooks.CucumberHooks - ========== Starting BDD Scenario: Add and search for a table record ==========
+2026-08-03 11:03:51 [main] INFO  com.demoqa.hooks.CucumberHooks - Scenario Finished: Add and search for a table record | Status: PASSED
+2026-08-03 11:03:51 [main] INFO  com.demoqa.hooks.CucumberHooks - ==========================================================================
+2026-08-03 11:03:56 [main] INFO  com.demoqa.listeners.TestListener - Test Passed: Add and search for a table record
+2026-08-03 11:03:57 [main] INFO  com.demoqa.listeners.TestListener - ========== SUITE EXECUTION FINISHED: BDD ==========

@@ -5,7 +5,10 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.demoqa.tests.BaseTest;
+import io.cucumber.testng.AbstractTestNGCucumberTests;
 import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -18,90 +21,127 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class TestListener implements ITestListener
-{
+public class TestListener implements ITestListener {
+    private static final Logger logger = LogManager.getLogger(TestListener.class);
+
     private static ExtentReports extent;
     private static ThreadLocal<ExtentTest> testThread = new ThreadLocal<>();
+    private String executionType = "Default";
 
     @Override
-    public void onStart(ITestContext context)
-    {
-        String timestamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-        String reportPath = System.getProperty("user.dir") + "/reports/ExtentReport_" + timestamp + ".html";
+    public void onStart(ITestContext context) {
+        String xmlExecType = context.getCurrentXmlTest().getParameter("executionType");
+        if (xmlExecType != null && !xmlExecType.isEmpty()) {
+            this.executionType = xmlExecType;
+        }
 
-        // FIX 1: ExtentHtmlReporter is deprecated/removed in Extent Reports v5.
-        // We now use ExtentSparkReporter to eliminate compilation issues.
-        ExtentSparkReporter sparkReporter = new ExtentSparkReporter(reportPath);
-        extent = new ExtentReports();
-        extent.attachReporter(sparkReporter);
-        extent.setSystemInfo("Automation Framework", "Page Object Model");
-        extent.setSystemInfo("Environment", "QA/Production");
-        extent.setSystemInfo("User Machine ID", System.getProperty("user.name"));
+        System.setProperty("logRouting", this.executionType);
+        org.apache.logging.log4j.core.LoggerContext ctx =
+                (org.apache.logging.log4j.core.LoggerContext) org.apache.logging.log4j.LogManager.getContext(false);
+        ctx.reconfigure();
+
+        logger.info("========== SUITE EXECUTION STARTED: " + this.executionType + " ==========");
+
+        // FIX 1: Only initialize if 'extent' is null (prevents overwriting in Hybrid runs)
+        if (extent == null && !"BDD".equalsIgnoreCase(this.executionType)) {
+            String reportPath = System.getProperty("user.dir") + "/reports/" + this.executionType + "_Report.html";
+
+            ExtentSparkReporter sparkReporter = new ExtentSparkReporter(reportPath);
+            extent = new ExtentReports();
+            extent.attachReporter(sparkReporter);
+            extent.setSystemInfo("Automation Framework", "Hybrid Page Object Model");
+            extent.setSystemInfo("Execution Type", this.executionType);
+            extent.setSystemInfo("User Machine ID", System.getProperty("user.name"));
+        }
     }
 
     @Override
-    public void onTestStart(ITestResult result)
-    {
-        ExtentTest test = extent.createTest(result.getMethod().getMethodName());
-        testThread.set(test);
+    public void onTestStart(ITestResult result) {
+        String testName = getTestName(result);
+        logger.info("Starting Test: " + testName);
+
+        // FIX 2: ONLY log to TestListener's Extent Report if it is NOT a Cucumber test
+        if (extent != null && !(result.getInstance() instanceof AbstractTestNGCucumberTests)) {
+            ExtentTest test = extent.createTest(testName);
+            testThread.set(test);
+        }
     }
 
     @Override
-    public void onTestSuccess(ITestResult result)
-    {
-        testThread.get().log(Status.PASS, "Test Executed and Passed Successfully.");
+    public void onTestSuccess(ITestResult result) {
+        String testName = getTestName(result);
+        logger.info("Test Passed: " + testName);
+
+        if (extent != null && testThread.get() != null) {
+            testThread.get().log(Status.PASS, "Test Executed and Passed Successfully.");
+        }
     }
 
     @Override
-    public void onTestFailure(ITestResult result)
-    {
-        testThread.get().log(Status.FAIL, "Test Execution Encountered a Fault: " + result.getThrowable());
+    public void onTestFailure(ITestResult result) {
+        String testName = getTestName(result);
+        logger.error("Test Failed: " + testName + " | Reason: " + result.getThrowable().getMessage());
 
-        // FIX 2: Safe fetching of the running test case object instance
-        Object currentClass = result.getInstance();
+        if (extent != null && testThread.get() != null) {
+            testThread.get().log(Status.FAIL, "Test Execution Encountered a Fault: " + result.getThrowable());
 
-        // FIX 3: Cast to BaseTest to fetch the active Webdriver reference cleanly
-        if (currentClass instanceof BaseTest)
-        {
-            WebDriver driver = ((BaseTest) currentClass).getDriver();
+            Object currentClass = result.getInstance();
+            WebDriver driver = null;
 
-            if (driver != null)
-            {
-                String screenshotPath = takeScreenshot(driver, result.getMethod().getMethodName());
-                // FIX 4: Correct v5 syntax for binding the captured screenshot string path to the log thread
-                testThread.get().addScreenCaptureFromPath(screenshotPath);
+            if (currentClass instanceof BaseTest) {
+                driver = ((BaseTest) currentClass).getDriver();
+            } else if (currentClass instanceof AbstractTestNGCucumberTests) {
+                driver = com.demoqa.context.DriverManager.getDriver();
+            }
+
+            if (driver != null) {
+                // 1. Save the physical .png file to the correct folder
+                String screenshotPath = takeScreenshot(driver, testName);
+                logger.info("Screenshot saved at: " + screenshotPath);
+
+                // 2. Attach Base64 encoded image directly to the Extent Report to prevent broken links
+                String base64Screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
+                testThread.get().addScreenCaptureFromBase64String(base64Screenshot, testName + " Failure");
             }
         }
     }
 
     @Override
-    public void onTestSkipped(ITestResult result)
-    {
-        testThread.get().log(Status.SKIP, "Test Execution was Skipped.");
+    public void onTestSkipped(ITestResult result) {
+        String testName = getTestName(result);
+        logger.warn("Test Skipped: " + testName);
+
+        if (extent != null && testThread.get() != null) {
+            testThread.get().log(Status.SKIP, "Test Execution was Skipped.");
+        }
     }
 
     @Override
-    public void onFinish(ITestContext context)
-    {
+    public void onFinish(ITestContext context) {
+        logger.info("========== SUITE EXECUTION FINISHED: " + this.executionType + " ==========");
         if (extent != null) {
             extent.flush();
         }
     }
 
-    private String takeScreenshot(WebDriver driver, String methodName)
-    {
-        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String destPath = System.getProperty("user.dir") + "/screenshots/" + methodName + "_" + timestamp + ".png";
-
-        // FIX 5: Explicitly type-cast the active web driver to the screen-capture engine
-        File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        try
-        {
-            FileUtils.copyFile(srcFile, new File(destPath));
+    private String getTestName(ITestResult result) {
+        String testName = result.getMethod().getMethodName();
+        if (result.getInstance() instanceof AbstractTestNGCucumberTests && result.getParameters().length > 0) {
+            testName = result.getParameters()[0].toString().replaceAll("\"", "");
         }
-        catch (IOException e)
-        {
-            System.out.println("Exception captured while taking framework screenshot: " + e.getMessage());
+        return testName;
+    }
+
+    private String takeScreenshot(WebDriver driver, String testName) {
+        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String cleanTestName = testName.replaceAll("[^a-zA-Z0-9.-]", "_");
+        String destPath = System.getProperty("user.dir") + "/screenshots/" + this.executionType + "/" + cleanTestName + "_" + timestamp + ".png";
+
+        File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        try {
+            FileUtils.copyFile(srcFile, new File(destPath));
+        } catch (IOException e) {
+            logger.error("Exception captured while taking framework screenshot: " + e.getMessage());
         }
         return destPath;
     }

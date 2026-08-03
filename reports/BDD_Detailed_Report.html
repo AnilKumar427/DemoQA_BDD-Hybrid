@@ -1,0 +1,803 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title></title>
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+<link href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@ce8b10435bcbae260c334c0d0c6b61d2c19b6168/spark/css/spark-style.css" rel="stylesheet" />
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@7cc78ce/spark/js/jsontree.js"></script>
+<style type="text/css"></style></head><body class="spa bdd-report standard">
+  <div class="app">
+    <div class="layout">
+<div class="header navbar">
+<div class="vheader">
+<div class="nav-logo">
+<a href="#">
+<div class="logo" style="background-image: url('https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png')"></div>
+</a>
+</div>
+<ul class="nav-left">
+<li class="search-box">
+<a class="search-toggle" href="#">
+<i class="search-icon fa fa-search"></i>
+<i class="search-icon-close fa fa-close"></i>
+</a>
+</li>
+<li class="search-input"><input id="search-tests" class="form-control" type="text" placeholder="Search..."></li>
+</ul>
+<ul class="nav-right">
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary"></span></a>
+</li>
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary">Aug 3, 2026 11:01:42 am</span></a>
+</li>
+</ul>
+</div>
+</div><div class="side-nav">
+<div class="side-nav-inner">
+<ul class="side-nav-menu">
+<li class="nav-item dropdown" onclick="toggleView('test-view')">
+<a id="nav-test" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-list"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('dashboard-view')">
+<a id="nav-dashboard" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bar-chart"></i></span>
+</a>
+</li>
+</ul>
+</div>
+</div>      <div class="vcontainer">
+        <div class="main-content">
+<div class="test-wrapper row view test-view">
+  <div class="test-list">
+    <div class="test-list-tools">
+<ul class="tools pull-left">
+<li><a href="#"><span class="font-size-14">Tests</span></a></li>
+</ul>
+<ul class="tools text-right">
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
+<ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>
+<div class="dropdown-divider"></div>
+<a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
+</ul>
+</li>
+</ul>
+</div>    <div class="test-list-wrapper scrollable">
+      <ul class="test-list-item">
+        <li class="test-item"  status="pass" test-id="1"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">Broken Assets and Hyperlinks Validation</p>
+            <p class="text-sm">
+              <span>11:01:43 am</span> / <span>00:00:24:844</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">Broken Assets and Hyperlinks Validation</h5>
+<span class='badge badge-success'>08.03.2026 11:01:43 am</span>
+<span class='badge badge-danger'>08.03.2026 11:02:08 am</span>
+<span class='badge badge-default'>00:00:24:844</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+<div class="m-t-10 m-l-5"></div>
+</div>
+</div>
+<div class="accordion mt-4">
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>Validate image rendering and link HTTP status codes</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="com.demoqa.steps.CommonSteps.i_navigate_to_the_page(java.lang.String)">
+                <span>Given I navigate to the "broken" page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.BrokenLinksSteps.the_valid_image_should_render_successfully()">
+                <span>Then the valid image should render successfully</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.BrokenLinksSteps.the_broken_image_should_fail_to_render()">
+                <span>And the broken image should fail to render</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.BrokenLinksSteps.the_standard_application_link_should_return_http_status(java.lang.Integer)">
+                <span>And the standard application link should return HTTP status 200</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.BrokenLinksSteps.the_broken_redirect_link_should_return_http_status(java.lang.Integer)">
+                <span>And the broken redirect link should return HTTP status 500</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="10"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">Buttons Advanced Interactions</p>
+            <p class="text-sm">
+              <span>11:02:08 am</span> / <span>00:00:11:684</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">Buttons Advanced Interactions</h5>
+<span class='badge badge-success'>08.03.2026 11:02:08 am</span>
+<span class='badge badge-danger'>08.03.2026 11:02:20 am</span>
+<span class='badge badge-default'>00:00:11:684</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=10</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+<div class="m-t-10 m-l-5"></div>
+</div>
+</div>
+<div class="accordion mt-4">
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="11"><span class="badge log pass-bg mr-2">Pass</span>Perform double, right, and dynamic clicks</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="com.demoqa.steps.CommonSteps.i_navigate_to_the_page(java.lang.String)">
+                <span>Given I navigate to the "buttons" page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.ButtonsSteps.i_trigger_a_double_click()">
+                <span>When I trigger a double click</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.ButtonsSteps.the_double_click_message_should_be(java.lang.String)">
+                <span>Then the double click message should be "You have done a double click"</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.ButtonsSteps.i_trigger_a_right_click()">
+                <span>When I trigger a right click</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.ButtonsSteps.the_right_click_message_should_be(java.lang.String)">
+                <span>Then the right click message should be "You have done a right click"</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.ButtonsSteps.i_trigger_a_dynamic_click()">
+                <span>When I trigger a dynamic click</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.ButtonsSteps.the_dynamic_click_message_should_be(java.lang.String)">
+                <span>Then the dynamic click message should be "You have done a dynamic click"</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="21"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">Check Box Interactions</p>
+            <p class="text-sm">
+              <span>11:02:20 am</span> / <span>00:00:10:272</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">Check Box Interactions</h5>
+<span class='badge badge-success'>08.03.2026 11:02:20 am</span>
+<span class='badge badge-danger'>08.03.2026 11:02:30 am</span>
+<span class='badge badge-default'>00:00:10:272</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=21</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+<div class="m-t-10 m-l-5"></div>
+</div>
+</div>
+<div class="accordion mt-4">
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="22"><span class="badge log pass-bg mr-2">Pass</span>Execute complex tree checkbox selections</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="com.demoqa.steps.CommonSteps.i_navigate_to_the_page(java.lang.String)">
+                <span>Given I navigate to the "checkbox" page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.CheckBoxSteps.i_execute_the_complex_tree_selection_flow()">
+                <span>When I execute the complex tree selection flow</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.CheckBoxSteps.the_checkbox_selections_should_be_verified()">
+                <span>Then the checkbox selections should be verified</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="28"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">Dynamic Delays and Properties</p>
+            <p class="text-sm">
+              <span>11:02:30 am</span> / <span>00:00:15:452</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">Dynamic Delays and Properties</h5>
+<span class='badge badge-success'>08.03.2026 11:02:30 am</span>
+<span class='badge badge-danger'>08.03.2026 11:02:46 am</span>
+<span class='badge badge-default'>00:00:15:452</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=28</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+<div class="m-t-10 m-l-5"></div>
+</div>
+</div>
+<div class="accordion mt-4">
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="29"><span class="badge log pass-bg mr-2">Pass</span>Wait for dynamic element properties</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="com.demoqa.steps.CommonSteps.i_navigate_to_the_page(java.lang.String)">
+                <span>Given I navigate to the "dynamic-properties" page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.DynamicPropertiesSteps.the_delayed_element_should_become_visible()">
+                <span>Then the delayed element should become visible</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.DynamicPropertiesSteps.the_interactive_button_should_become_clickable()">
+                <span>And the interactive button should become clickable</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.DynamicPropertiesSteps.the_text_color_should_mutate_to_danger()">
+                <span>And the text color should mutate to danger</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="36"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">Window Navigation and Mock API Links</p>
+            <p class="text-sm">
+              <span>11:02:46 am</span> / <span>00:00:15:053</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">Window Navigation and Mock API Links</h5>
+<span class='badge badge-success'>08.03.2026 11:02:46 am</span>
+<span class='badge badge-danger'>08.03.2026 11:03:01 am</span>
+<span class='badge badge-default'>00:00:15:053</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=36</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+<div class="m-t-10 m-l-5"></div>
+</div>
+</div>
+<div class="accordion mt-4">
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="37"><span class="badge log pass-bg mr-2">Pass</span>Follow simple and API links</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="com.demoqa.steps.CommonSteps.i_navigate_to_the_page(java.lang.String)">
+                <span>Given I navigate to the "links" page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.LinksSteps.i_follow_the_simple_link()">
+                <span>When I follow the simple link</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.LinksSteps.a_new_tab_should_open_with_a_valid_title()">
+                <span>Then a new tab should open with a valid title</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.LinksSteps.i_click_the_api_link(java.lang.String)">
+                <span>When I click the "created" API link</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.LinksSteps.the_api_response_panel_should_contain(java.lang.String)">
+                <span>Then the API response panel should contain "201"</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="45"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">Radio Button Interactions</p>
+            <p class="text-sm">
+              <span>11:03:01 am</span> / <span>00:00:09:982</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">Radio Button Interactions</h5>
+<span class='badge badge-success'>08.03.2026 11:03:01 am</span>
+<span class='badge badge-danger'>08.03.2026 11:03:11 am</span>
+<span class='badge badge-default'>00:00:09:982</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=45</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+<div class="m-t-10 m-l-5"></div>
+</div>
+</div>
+<div class="accordion mt-4">
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="46"><span class="badge log pass-bg mr-2">Pass</span>Select radio buttons and verify states</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="com.demoqa.steps.CommonSteps.i_navigate_to_the_page(java.lang.String)">
+                <span>Given I navigate to the "radio-button" page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.RadioButtonSteps.i_select_the_yes_radio_button()">
+                <span>When I select the Yes radio button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.RadioButtonSteps.the_radio_confirmation_text_should_contain(java.lang.String)">
+                <span>Then the radio confirmation text should contain "Yes"</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.RadioButtonSteps.i_select_the_impressive_radio_button()">
+                <span>When I select the Impressive radio button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.RadioButtonSteps.the_radio_confirmation_text_should_contain(java.lang.String)">
+                <span>Then the radio confirmation text should contain "Impressive"</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.RadioButtonSteps.the_no_radio_button_should_be_disabled()">
+                <span>And the No radio button should be disabled</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="55"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">Text Box Interactions</p>
+            <p class="text-sm">
+              <span>11:03:11 am</span> / <span>00:00:11:333</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">Text Box Interactions</h5>
+<span class='badge badge-success'>08.03.2026 11:03:11 am</span>
+<span class='badge badge-danger'>08.03.2026 11:03:22 am</span>
+<span class='badge badge-default'>00:00:11:333</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=55</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+<div class="m-t-10 m-l-5"></div>
+</div>
+</div>
+<div class="accordion mt-4">
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="56"><span class="badge log pass-bg mr-2">Pass</span>Successfully submit the text box form</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="com.demoqa.steps.CommonSteps.i_navigate_to_the_page(java.lang.String)">
+                <span>Given I navigate to the "text-box" page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.TextBoxSteps.i_fill_the_text_box_form_with_valid_details()">
+                <span>When I fill the text box form with valid details</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.TextBoxSteps.the_output_panel_should_be_displayed()">
+                <span>Then the output panel should be displayed</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="62"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">File Transfer Modules</p>
+            <p class="text-sm">
+              <span>11:03:22 am</span> / <span>00:00:10:683</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">File Transfer Modules</h5>
+<span class='badge badge-success'>08.03.2026 11:03:22 am</span>
+<span class='badge badge-danger'>08.03.2026 11:03:33 am</span>
+<span class='badge badge-default'>00:00:10:683</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=62</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+<div class="m-t-10 m-l-5"></div>
+</div>
+</div>
+<div class="accordion mt-4">
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="63"><span class="badge log pass-bg mr-2">Pass</span>Download and upload a sample file</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="com.demoqa.steps.CommonSteps.i_navigate_to_the_page(java.lang.String)">
+                <span>Given I navigate to the "upload-download" page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.UploadDownloadSteps.i_trigger_the_file_download()">
+                <span>When I trigger the file download</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.UploadDownloadSteps.i_upload_a_sample_file_named(java.lang.String)">
+                <span>And I upload a sample file named "frameworkSample.txt"</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.UploadDownloadSteps.the_upload_confirmation_should_contain(java.lang.String)">
+                <span>Then the upload confirmation should contain "frameworkSample.txt"</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="70"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">Web Tables Operations</p>
+            <p class="text-sm">
+              <span>11:03:33 am</span> / <span>00:00:23:629</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">Web Tables Operations</h5>
+<span class='badge badge-success'>08.03.2026 11:03:33 am</span>
+<span class='badge badge-danger'>08.03.2026 11:03:56 am</span>
+<span class='badge badge-default'>00:00:23:629</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=70</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+<div class="m-t-10 m-l-5"></div>
+</div>
+</div>
+<div class="accordion mt-4">
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="71"><span class="badge log pass-bg mr-2">Pass</span>Add and search for a table record</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="com.demoqa.steps.CommonSteps.i_navigate_to_the_page(java.lang.String)">
+                <span>Given I navigate to the "webtables" page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.WebTablesSteps.i_add_a_new_record_for(java.lang.String,java.lang.String)">
+                <span>When I add a new record for "Albert" "Einstein"</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.WebTablesSteps.i_search_for_the_record(java.lang.String)">
+                <span>And I search for the record "Kierra"</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.demoqa.steps.WebTablesSteps.the_matching_records_should_be_displayed()">
+                <span>Then the matching records should be displayed</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+<div class="test-content scrollable">
+<div class="test-content-tools">
+<ul><li><a class="back-to-test" href="#"><i class="fa fa-arrow-left"></i></a></li></ul>
+</div>
+<div class="test-content-detail"><div class="detail-body"></div></div>
+</div></div>
+<div class="container-fluid p-4 view dashboard-view">
+<div class="row">
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Started</p>
+<h3>Aug 3, 2026 11:01:42 am</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Ended</p>
+<h3>Aug 3, 2026 11:03:56 am</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-pass">Features Passed</p>
+<h3>9</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-fail">Features Failed</p>
+<h3>0</h3>
+</div></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Features</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='parent-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='100%'>
+<b>9</b> features passed
+</small>
+</div>
+<div>
+<small data-tooltip='0%'><b>0</b> features failed,
+<b>0</b> skipped, <b data-tooltip='0%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Scenarios</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='child-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='100%'><b>9</b> scenarios passed</small></div>
+<div>
+<small data-tooltip='0%'><b>0</b> scenarios failed,
+<b>0</b> skipped, <b data-tooltip='%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Steps</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='grandchild-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='100%'><b>41</b> steps passed</small></div>
+<div>
+<small data-tooltip='0%'><b>0</b> steps failed,
+<b>0</b> skipped, <b data-tooltip='%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><div class="col-md-12">
+<div class="card"><div class="card-header"><p>Timeline</p></div>
+<div class="card-body pt-0"><div>
+<canvas id="timeline" height="120"></canvas>
+</div></div>
+</div>
+</div></div>
+<script>
+var timeline = {
+"Broken Assets and Hyperlinks Validation":24.844,"Buttons Advanced Interactions":11.684,"Check Box Interactions":10.272,"Dynamic Delays and Properties":15.452,"Window Navigation and Mock API Links":15.053,"Radio Button Interactions":9.982,"Text Box Interactions":11.333,"File Transfer Modules":10.683,"Web Tables Operations":23.629
+};
+</script>
+<div class="row">
+</div>
+</div>
+<script>
+var statusGroup = {
+parentCount: 5,
+passParent: 9,
+failParent: 0,
+warningParent: 0,
+skipParent: 0,
+childCount: 5,
+passChild: 9,
+failChild: 0,
+warningChild: 0,
+skipChild: 0,
+infoChild: 0,
+grandChildCount: 5,
+passGrandChild: 41,
+failGrandChild: 0,
+warningGrandChild: 0,
+skipGrandChild: 0,
+infoGrandChild: 0,
+eventsCount: 5,
+};
+</script>        </div>
+      </div>
+    </div>
+  </div>
+<script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@ce8b10435bcbae260c334c0d0c6b61d2c19b6168/spark/js/spark-script.js"></script>
+<script type="text/javascript"></script></body>
+</html>
