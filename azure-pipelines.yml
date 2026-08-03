@@ -20,7 +20,7 @@ steps:
   displayName: 'Run Maven Tests (BDD Default)'
   inputs:
     script: |
-      mvn clean test -Dsurefire.suiteXmlFiles=testng-bdd.xml -Dheadless=true
+      mvn clean test -Dsurefire.suiteXmlFiles=testng-bdd.xml
 
 # Uploads the reports and screenshots back to Azure DevOps
 - task: PublishPipelineArtifact@1
