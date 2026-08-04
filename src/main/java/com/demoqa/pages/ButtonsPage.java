@@ -1,5 +1,6 @@
 package com.demoqa.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -33,6 +34,7 @@ public class ButtonsPage extends BaseEnginePage {
     }
 
     public void triggerRightClick() {
+
         actions.contextClick(rightClickBtn).perform();
     }
 
@@ -45,7 +47,11 @@ public class ButtonsPage extends BaseEnginePage {
     }
 
     public String getRightClickMessage() {
-        return wait.until(ExpectedConditions.visibilityOf(rightMessage)).getText();
+        // Wait up to 10 seconds for the message to physically appear in the DOM
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("rightClickMessage")));
+
+        return message.getText();
     }
 
     public String getDynamicClickMessage() {

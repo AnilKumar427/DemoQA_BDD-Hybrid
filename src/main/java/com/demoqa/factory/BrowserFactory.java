@@ -75,59 +75,39 @@ import utils.ConfigReader;
 
 public class BrowserFactory
 {
-    public static WebDriver createDriverInstance(String browser)
-    {
-        WebDriver driver;
-        String headlessProp = ConfigReader.getProperty("headless");
-        boolean isHeadless = headlessProp != null && headlessProp.equalsIgnoreCase("true");
+    public static WebDriver createDriverInstance(String browser) {
+        WebDriver driver = null;
 
-        switch (browser.toLowerCase().trim())
-        {
-            case "chrome":
-                ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("--remote-allow-origins=*");
+        // Read your headless property (either from config or command line)
+        String configHeadless = utils.ConfigReader.getProperty("headless");
+        String cmdHeadless = System.getProperty("headless");
+        boolean isHeadless = Boolean.parseBoolean(cmdHeadless != null ? cmdHeadless : configHeadless);
 
-                // Added arguments to prevent crashes in CI/CD environments
-                chromeOptions.addArguments("--no-sandbox");
-                chromeOptions.addArguments("--disable-dev-shm-usage");
+        if (browser.equalsIgnoreCase("chrome")) {
+            ChromeOptions options = new ChromeOptions();
 
-                if (isHeadless)
-                {
-                    chromeOptions.addArguments("--headless=new");
-                    chromeOptions.addArguments("--window-size=1920,1080");
-                }
-                driver = new ChromeDriver(chromeOptions);
-                break;
+            // ---> PUT IT RIGHT HERE FOR CHROME <---
+            if (isHeadless) {
+                options.addArguments("--headless=new");
+                options.addArguments("--window-size=1920,1080");
+                options.addArguments("--disable-gpu");
+            }
 
-            case "edge":
-                EdgeOptions edgeOptions = new EdgeOptions();
-                edgeOptions.addArguments("--remote-allow-origins=*");
+            driver = new ChromeDriver(options); // Initialize AFTER setting options
 
-                // Added arguments to prevent crashes in CI/CD environments
-                edgeOptions.addArguments("--no-sandbox");
-                edgeOptions.addArguments("--disable-dev-shm-usage");
+        } else if (browser.equalsIgnoreCase("edge")) {
+            EdgeOptions options = new EdgeOptions();
 
-                if (isHeadless)
-                {
-                    edgeOptions.addArguments("--headless=new");
-                    edgeOptions.addArguments("--window-size=1920,1080");
-                }
-                driver = new EdgeDriver(edgeOptions);
-                break;
+            // ---> PUT IT RIGHT HERE FOR EDGE <---
+            if (isHeadless) {
+                options.addArguments("--headless=new");
+                options.addArguments("--window-size=1920,1080");
+                options.addArguments("--disable-gpu");
+            }
 
-            case "firefox":
-            case "ff":
-                FirefoxOptions firefoxOptions = new FirefoxOptions();
-                if (isHeadless)
-                {
-                    firefoxOptions.addArguments("-headless");
-                }
-                driver = new FirefoxDriver(firefoxOptions);
-                break;
-
-            default:
-                throw new IllegalArgumentException("Unsupported browser: " + browser);
+            driver = new EdgeDriver(options); // Initialize AFTER setting options
         }
+
         return driver;
     }
 }
