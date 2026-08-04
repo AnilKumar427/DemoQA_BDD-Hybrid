@@ -1,11 +1,8 @@
 name: DemoQA Automation Suite
 
 on:
-  # Triggers automatically when code is pushed to the main branch
   push:
     branches: [ "main" ]
-
-  # Allows you to run this workflow manually from the GitHub Actions UI
   workflow_dispatch:
     inputs:
       test_suite:
@@ -33,11 +30,10 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      # ---> THIS IS THE NEW STEP FIXING YOUR JAR ISSUE <---
       - name: Install Local QA_Utils JAR
         run: mvn install:install-file "-Dfile=lib/QA_Utils-1.0-SNAPSHOT.jar" "-DgroupId=com.QA.Utils" "-DartifactId=QA_Utils" "-Dversion=1.0-SNAPSHOT" "-Dpackaging=jar"
 
-      - name: Run Framework (BDD Default)
+      - name: Run Framework
         run: mvn clean test -Dsurefire.suiteXmlFiles=${{ github.event.inputs.test_suite || 'testng-bdd.xml' }} -Dheadless=true
 
       - name: Upload Test Artifacts
@@ -45,8 +41,8 @@ jobs:
         if: always()
         with:
           name: Automation-Artifacts
-          # If any of these folders don't generate on a failed run, the step will still pass
           path: |
+            target/surefire-reports/
             logs/
             reports/
             screenshots/
