@@ -35,7 +35,7 @@ jobs:
 
       - name: Run Framework (BDD Default)
         # Using shell: cmd prevents PowerShell from breaking the -D arguments
-        shell: cmd
+
         run: mvn clean test -Dsurefire.suiteXmlFiles=${{ github.event.inputs.test_suite || 'testng-bdd.xml' }} -Dheadless=true
 
       - name: Upload Test Artifacts
