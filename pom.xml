@@ -80,6 +80,8 @@
             <groupId>com.QA.Utils</groupId>
             <artifactId>QA_Utils</artifactId>
             <version>1.0-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/QA_Utils-1.0-SNAPSHOT.jar</systemPath>
         </dependency>
 
         <!--Reports Generating Dependencies-->
@@ -131,7 +133,7 @@
                 <version>3.2.5</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>testng.xml</suiteXmlFile>
+                        <suiteXmlFile>testng-combined.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
