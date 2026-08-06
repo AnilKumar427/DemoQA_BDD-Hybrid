@@ -17,7 +17,7 @@ steps:
 
 # Using CmdLine@2 forces standard Command Prompt, avoiding the PowerShell parsing issues with Maven arguments
 - task: CmdLine@2
-  displayName: 'Run Maven Tests (BDD Default)'
+  displayName: 'Run Maven Tests Combined-hybrid Suite'
   inputs:
     script: |
       mvn clean test -Dsurefire.suiteXmlFiles=testng-combined.xml
