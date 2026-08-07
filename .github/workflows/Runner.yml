@@ -34,7 +34,7 @@ jobs:
         run: mvn install:install-file "-Dfile=lib/QA_Utils-1.0-SNAPSHOT.jar" "-DgroupId=com.QA.Utils" "-DartifactId=QA_Utils" "-Dversion=1.0-SNAPSHOT" "-Dpackaging=jar"
 
       - name: Run Framework
-        run: mvn clean test -Dsurefire.suiteXmlFiles=${{ github.event.inputs.test_suite || 'testng-bdd.xml' }} -Dheadless=true
+        run: mvn clean test "-Dsurefire.suiteXmlFiles=${{ github.event.inputs.test_suite || 'testng-bdd.xml' }}" "-Dheadless=true"
 
       - name: Upload Test Artifacts
         uses: actions/upload-artifact@v4
